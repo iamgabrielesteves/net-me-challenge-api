@@ -80,7 +80,7 @@ Feito isso o docker vai levantar os serviços configurados sendo eles:
 
 Assim temos os serviços de API e o banco rodando nas portas http/8080 e tcp/5432 respectivamente.
 
-** Caso o container ``mechallenge-api`` apresente erro de comunicação com o banco você pode iniciar ele manualmente;
+** Caso o container ``mechallenge-api`` apresente erro de comunicação com o banco você pode iniciar ele manualmente pela UI do Docker (clicando no Play) ou via de comando pelo Linux;
 
 ## Swagger
 Pode ser acessado via: http://localhost:8080/swagger/index.html
