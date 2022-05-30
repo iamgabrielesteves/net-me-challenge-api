@@ -41,6 +41,8 @@ Camadas de aplicação e infraestrutura e uma camada compartilhada chamada `Seed
 
 ![project tree image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/project-tree.PNG)
 
+** As regras de negocios + contratos de infraestrutura estão na Camada de Dominio (evitando classes anemicas (somentes entidades com Get e Sets sem logicas))
+
 ## Docker
 
 Para simplificar o teste da solução criei os arquivos do containers do docker, junto com o docker-compose, portanto para
