@@ -1,0 +1,28 @@
+﻿version: "3.9"
+services:
+  db:
+    image: postgres:9.6
+    container_name: "mechallenge-db"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Postgres2019!"
+      TZ: "GMT"
+
+  mechallenge:
+    image: mechallenge
+    container_name: "mechallenge-api"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - default
+    depends_on:
+      - "db"
+
+networks:
+  default:
+    driver: bridge
