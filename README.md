@@ -25,6 +25,7 @@ public enum OrderStatus
 ## Base de dados
 
 Para simplificar o uso do projeto foi utilizado Ef Core 6 com Migrations em cima de uma banco Postgres.
+
 `As migration são executadas junto com o projeto.`
 
 ![postgres image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/postgres.PNG)
