@@ -36,7 +36,7 @@ para aprendizado e o projeto não possui alta complexidade de negocio.
 
 Camadas de aplicação e infraestrutura e uma camada compartilhada chamada `SeedWorks`.
 
-![alt text for screen readers](.\docs\project-tree.PNG "project tree").
+![project tree image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/project-tree.PNG)
 
 ## Docker
 
@@ -52,7 +52,8 @@ Feito isso o docker vai levantar os serviços configurados sendo eles:
 * O banco de dados postgres; e
 * A aplicação web api;
 
-![alt text for screen readers](.\docs\docker-running.PNG "docker running").
+![docker running image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/docker-running.PNG)
+
 
 Assim temos os serviços de API e o banco rodando nas portas http/8080 e tcp/5432 respectivamente.
 
