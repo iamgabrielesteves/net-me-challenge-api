@@ -165,7 +165,7 @@ response:
 }
 ```
 
-### GET api/status
+### POST api/status
 
 Alteração de status
 
