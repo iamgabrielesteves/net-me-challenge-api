@@ -41,7 +41,25 @@ Camadas de aplicação e infraestrutura e uma camada compartilhada chamada `Seed
 
 ![project tree image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/project-tree.PNG)
 
-** As regras de negocios + contratos de infraestrutura estão na Camada de Dominio (evitando classes anemicas (somentes entidades com Get e Sets sem logicas))
+* As regras de negocios + contratos de infraestrutura estão na Camada de Dominio (evitando classes anemicas (somentes entidades com Get e Sets sem logicas))
+* Dentro do Application estão a Orquestração entre Domain, Infra e UI (no caso uma API.. mas poderia ser uma console etc)
+* Validações feitas com o FluentValidation para os Commands no seguinte padrão:
+
+````
+{
+  "errors": [
+    {
+      "title": "Items[0].Qtd",
+      "description": "'Qtd' must not be empty.",
+      "code": 64257825,
+      "type": "Error"
+    }
+  ],
+  "type": "InvalidCommandRuleValidationExceptionProblemDetails",
+  "status": 400
+}
+
+````
 
 ## Docker
 
