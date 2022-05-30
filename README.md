@@ -30,6 +30,8 @@ Para simplificar o uso do projeto foi utilizado Ef Core 6 com Migrations em cima
 
 ![postgres image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/postgres.PNG)
 
+** Por padrão foram criados somente alguns Products para teste
+
 ## Estrutura do projeto
 
 A solução possui alguns projetos, separando uma intenção de camada de dominio, digo intenção porque visto que é somente
