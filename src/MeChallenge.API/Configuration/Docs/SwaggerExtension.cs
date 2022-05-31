@@ -25,7 +25,7 @@
 
             app.UseSwaggerUI(setup =>
             {
-                setup.SwaggerEndpoint("/swagger/v1/swagger.json", "Wire Transfer In API V1");
+                setup.SwaggerEndpoint("/swagger/v1/swagger.json", "Me Challenge API V1");
             });
         }
     }
