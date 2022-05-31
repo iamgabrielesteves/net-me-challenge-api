@@ -25,9 +25,12 @@ public enum OrderStatus
 ## Base de dados
 
 Para simplificar o uso do projeto foi utilizado Ef Core 6 com Migrations em cima de uma banco Postgres.
+
 `As migration são executadas junto com o projeto.`
 
-![alt text for screen readers](C:\_\net-me-challenge-api\docs\postgres.PNG "postgres database").
+![postgres image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/postgres.PNG)
+
+** Por padrão foram criados somente alguns Products para teste
 
 ## Estrutura do projeto
 
@@ -36,7 +39,27 @@ para aprendizado e o projeto não possui alta complexidade de negocio.
 
 Camadas de aplicação e infraestrutura e uma camada compartilhada chamada `SeedWorks`.
 
-![alt text for screen readers](C:\_\net-me-challenge-api\docs\project-tree.PNG "project tree").
+![project tree image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/project-tree.PNG)
+
+* As regras de negocios + contratos de infraestrutura estão na Camada de Dominio (evitando classes anemicas (somentes entidades com Get e Sets sem logicas))
+* Dentro do Application estão a Orquestração entre Domain, Infra e UI (no caso uma API.. mas poderia ser uma console etc)
+* Validações feitas com o FluentValidation para os Commands no seguinte padrão:
+
+````
+{
+  "errors": [
+    {
+      "title": "Items[0].Qtd",
+      "description": "'Qtd' must not be empty.",
+      "code": 64257825,
+      "type": "Error"
+    }
+  ],
+  "type": "InvalidCommandRuleValidationExceptionProblemDetails",
+  "status": 400
+}
+
+````
 
 ## Docker
 
@@ -52,11 +75,12 @@ Feito isso o docker vai levantar os serviços configurados sendo eles:
 * O banco de dados postgres; e
 * A aplicação web api;
 
-![alt text for screen readers](C:\_\net-me-challenge-api\docs\docker-running.PNG "docker running").
+![docker running image](https://github.com/gabrielesteveslima/net-me-challenge-api/blob/master/docs/docker-running.PNG)
+
 
 Assim temos os serviços de API e o banco rodando nas portas http/8080 e tcp/5432 respectivamente.
 
-** Caso o container ``mechallenge-api`` apresente erro de comunicação com o banco você pode iniciar ele manualmente;
+** Caso o container ``mechallenge-api`` apresente erro de comunicação com o banco você pode iniciar ele manualmente pela UI do Docker (clicando no Play) ou via de comando pelo Linux;
 
 ## Swagger
 Pode ser acessado via: http://localhost:8080/swagger/index.html
@@ -141,7 +165,7 @@ response:
 }
 ```
 
-### GET api/status
+### POST api/status
 
 Alteração de status
 
