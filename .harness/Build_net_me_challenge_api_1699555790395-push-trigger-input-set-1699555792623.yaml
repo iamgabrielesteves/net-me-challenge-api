@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_net_me_challenge_api_1699555790395-push-trigger-input-set
+  identifier: Build_net_me_challenge_api_1699555790395pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: StrokeReactApp
+  pipeline:
+    identifier: Build_net_me_challenge_api_1699555790395
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
