@@ -1,0 +1,46 @@
+# .harness/pipeline.yaml
+
+name: dotnetcore-ci-cd
+
+stages:
+  - name: Checkout
+    type: GitClone
+    configuration: 
+      repoURL: $REPO_URL
+
+  - name: BuildDotnetCore
+    type: Shell
+    configuration:
+      commands:
+        - "dotnet build -c Release"
+
+  - name: RunUnitTests
+    type: Shell
+    configuration:
+      commands:
+        - "dotnet test"
+
+  - name: BuildDockerImage
+    type: Shell
+    configuration:
+      commands:
+        - "docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f /src/Dockerfile ."
+      environmentVariables:
+        - name: DOCKER_IMAGE_NAME
+          value: "nome-imagem"
+        - name: DOCKER_IMAGE_TAG
+          value: "tag"
+
+  - name: PublishToACR
+    type: Shell
+    configuration:
+      commands:
+        - "az acr login --name $ACR_NAME"
+        - "docker push $ACR_NAME.azurecr.io/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
+      environmentVariables:
+        - name: ACR_NAME
+          value: "nome-do-seu-acr"
+        - name: DOCKER_IMAGE_NAME
+          value: "nome-imagem"
+        - name: DOCKER_IMAGE_TAG
+          value: "tag"
