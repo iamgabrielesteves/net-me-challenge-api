@@ -11,7 +11,7 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: Checkout
+        name: BuildAndTests
         identifier: Checkout
         description: ""
         type: CI
@@ -50,3 +50,6 @@ pipeline:
                   spec:
                     shell: Bash
                     command: dotnet build -c Release
+          caching:
+            enabled: false
+            paths: []
