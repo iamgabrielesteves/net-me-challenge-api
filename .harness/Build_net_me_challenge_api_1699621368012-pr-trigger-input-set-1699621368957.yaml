@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_net_me_challenge_api_1699621368012-pr-trigger-input-set
+  identifier: Build_net_me_challenge_api_1699621368012prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: HABITVS
+  pipeline:
+    identifier: Build_net_me_challenge_api_1699621368012
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
