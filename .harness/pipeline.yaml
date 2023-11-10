@@ -1,0 +1,52 @@
+pipeline:
+  name: pipeline
+  identifier: pipeline
+  projectIdentifier: HABITVS
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        repoName: <+input>
+        build: <+input>
+  stages:
+    - stage:
+        name: Checkout
+        identifier: Checkout
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: GitClone
+                  name: Checkout
+                  identifier: Checkout
+                  spec:
+                    connectorRef: account.Github_OAuth_1699622125770
+                    repoName: <+input>
+                    build:
+                      type: branch
+                      spec:
+                        branch: develop
+              - step:
+                  type: Run
+                  name: RunUnitTests
+                  identifier: RunUnitTests
+                  spec:
+                    shell: Sh
+                    command: dotnet test
+              - step:
+                  type: Run
+                  name: BuildDotnetCore
+                  identifier: BuildDotnetCore
+                  spec:
+                    shell: Bash
+                    command: dotnet build -c Release
