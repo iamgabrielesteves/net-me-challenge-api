@@ -18,16 +18,18 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: echo
-                  name: echo
+                  type: BuildAndPushACR
+                  name: BuildAndPushACR_1
+                  identifier: BuildAndPushACR_1
                   spec:
-                    command: echo hello world
-                  timeout: ""
-                  type: Run
+                    connectorRef: Azure_Cloud
+                    repository: habitvsdev.azurecr.io
+                    tags:
+                      - latest
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
