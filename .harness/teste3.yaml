@@ -1,0 +1,27 @@
+inputSet:
+  pipeline:
+    identifier: pipeline
+    properties:
+      ci:
+        codebase:
+          repoName: net-me-challenge-api
+          build:
+            type: branch
+            spec:
+              branch: master
+    stages:
+      - stage:
+          identifier: Checkout
+          type: CI
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: Checkout
+                    type: GitClone
+                    spec:
+                      repoName: net-me-challenge-api
+  name: teste3
+  identifier: teste3
+  orgIdentifier: default
+  projectIdentifier: HABITVS
