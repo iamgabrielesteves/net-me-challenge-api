@@ -53,3 +53,34 @@ pipeline:
           caching:
             enabled: false
             paths: []
+    - stage:
+        name: PublishContainerRegistry
+        identifier: PublishContainerRegistry
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: BuildDockerImage
+                  identifier: BuildDockerImage
+                  spec:
+                    shell: Sh
+                    command: docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f /src/Dockerfile .
+              - step:
+                  type: Run
+                  name: PublishToACR
+                  identifier: PublishToACR
+                  spec:
+                    shell: Sh
+                    command: |-
+                      az acr login --name $ACR_NAME
+                      docker push $ACR_NAME.azurecr.io/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
