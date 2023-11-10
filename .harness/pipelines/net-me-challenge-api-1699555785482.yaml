@@ -24,6 +24,15 @@ pipeline:
                     command: echo hello world
                   timeout: ""
                   type: Run
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    repo: gabrielesteveslima/infra-test-netcore
+                    tags:
+                      - latest
           platform:
             os: Linux
             arch: Amd64
@@ -31,3 +40,4 @@ pipeline:
             type: Docker
             spec: {}
         type: CI
+        description: ""
